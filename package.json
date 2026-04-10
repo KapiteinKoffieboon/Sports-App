@@ -1,0 +1,15 @@
+{
+  "name": "sports-app",
+  "version": "1.0.0",
+  "description": "A school sports app powered by Cloudflare Workers, D1, and Pages",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init": "wrangler d1 execute sports-db --file=schema.sql",
+    "db:init:remote": "wrangler d1 execute sports-db --remote --file=schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^3.114.17"
+  }
+}

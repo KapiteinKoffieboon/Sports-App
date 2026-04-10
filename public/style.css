@@ -1,0 +1,227 @@
+/* ── Reset & base ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #f6821f;   /* Cloudflare orange */
+  --primary-dark: #d46a0d;
+  --bg: #f0f2f5;
+  --card-bg: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,.09);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+header h1 { font-size: 1.6rem; white-space: nowrap; }
+
+nav { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+.nav-btn {
+  background: rgba(255,255,255,.2);
+  border: 2px solid transparent;
+  color: #fff;
+  padding: .45rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: 600;
+  transition: background .2s, border-color .2s;
+}
+.nav-btn:hover { background: rgba(255,255,255,.35); }
+.nav-btn.active { background: #fff; color: var(--primary); border-color: #fff; }
+
+/* ── Main layout ────────────────────────────────────────────────────────────── */
+main { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+
+.view { display: none; }
+.view.active { display: block; }
+
+/* ── Filter bar ─────────────────────────────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.filter-bar select {
+  padding: .4rem .75rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: .9rem;
+  background: #fff;
+}
+
+/* ── Card grid ──────────────────────────────────────────────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* ── Match card ─────────────────────────────────────────────────────────────── */
+.match-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.match-card .sport-tag {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.match-card .scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap .5rem;
+  margin: .25rem 0;
+}
+
+.match-card .team { font-weight: 600; font-size: .95rem; flex: 1; }
+.match-card .team.away { text-align: right; }
+.match-card .score {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary);
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.match-card .meta {
+  font-size: .82rem;
+  color: var(--muted);
+}
+
+.match-card .delete-btn {
+  align-self: flex-end;
+  background: none;
+  border: 1px solid #fca5a5;
+  color: #ef4444;
+  padding: .25rem .75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: .8rem;
+  margin-top: .25rem;
+  transition: background .2s;
+}
+.match-card .delete-btn:hover { background: #fee2e2; }
+
+/* ── Sport card ─────────────────────────────────────────────────────────────── */
+.sport-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  text-align: center;
+}
+.sport-card .icon { font-size: 3rem; }
+.sport-card h3 { margin-top: .5rem; font-size: 1.1rem; }
+
+/* ── Team card ──────────────────────────────────────────────────────────────── */
+.team-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.5rem;
+}
+.team-card h3 { font-size: 1rem; font-weight: 700; }
+.team-card .sport-tag {
+  font-size: .8rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: .25rem;
+}
+
+/* ── Form ───────────────────────────────────────────────────────────────────── */
+.form-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 480px;
+}
+
+.form-card label {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.form-card input,
+.form-card select {
+  padding: .5rem .75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: .95rem;
+  background: #fafafa;
+  transition: border-color .2s;
+}
+.form-card input:focus,
+.form-card select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+}
+
+.form-card button[type="submit"] {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: .65rem 1.25rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+  align-self: flex-start;
+}
+.form-card button[type="submit"]:hover { background: var(--primary-dark); }
+
+.form-msg { font-size: .88rem; min-height: 1.2em; }
+.form-msg.success { color: #16a34a; }
+.form-msg.error   { color: #dc2626; }
+
+/* ── Loading / empty states ─────────────────────────────────────────────────── */
+.state-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem;
+  font-size: .95rem;
+}
+
+h2 { margin-bottom: 1rem; font-size: 1.3rem; }
