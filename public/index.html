@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🏆 Sports App</h1>
+    <nav>
+      <button class="nav-btn active" data-view="matches">Matches</button>
+      <button class="nav-btn" data-view="sports">Sports</button>
+      <button class="nav-btn" data-view="teams">Teams</button>
+      <button class="nav-btn" data-view="add-match">+ Add Match</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Matches view -->
+    <section id="view-matches" class="view active">
+      <div class="filter-bar">
+        <label for="filter-sport">Filter by sport:</label>
+        <select id="filter-sport">
+          <option value="">All sports</option>
+        </select>
+      </div>
+      <div id="matches-list" class="card-grid"></div>
+    </section>
+
+    <!-- Sports view -->
+    <section id="view-sports" class="view">
+      <div id="sports-list" class="card-grid"></div>
+    </section>
+
+    <!-- Teams view -->
+    <section id="view-teams" class="view">
+      <div class="filter-bar">
+        <label for="filter-team-sport">Filter by sport:</label>
+        <select id="filter-team-sport">
+          <option value="">All sports</option>
+        </select>
+      </div>
+      <div id="teams-list" class="card-grid"></div>
+    </section>
+
+    <!-- Add match view -->
+    <section id="view-add-match" class="view">
+      <h2>Add Match</h2>
+      <form id="add-match-form" class="form-card">
+        <label>Sport
+          <select id="form-sport" required></select>
+        </label>
+        <label>Home team
+          <select id="form-home-team" required></select>
+        </label>
+        <label>Away team
+          <select id="form-away-team" required></select>
+        </label>
+        <label>Home score
+          <input type="number" id="form-home-score" value="0" min="0" />
+        </label>
+        <label>Away score
+          <input type="number" id="form-away-score" value="0" min="0" />
+        </label>
+        <label>Date
+          <input type="date" id="form-date" required />
+        </label>
+        <label>Location
+          <input type="text" id="form-location" placeholder="e.g. School Field" />
+        </label>
+        <button type="submit">Save match</button>
+        <p id="form-msg" class="form-msg"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

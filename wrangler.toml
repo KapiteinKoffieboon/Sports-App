@@ -1,0 +1,15 @@
+# See https://developers.cloudflare.com/workers/wrangler/configuration/
+name = "sports-app"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# Cloudflare Pages handles the frontend (public/ directory).
+# The Worker handles all /api/* requests.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sports-db"
+database_id = "replace-with-your-d1-database-id"
+
+[env.production]
+name = "sports-app-production"
