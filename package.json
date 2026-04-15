@@ -4,6 +4,7 @@
   "description": "A school sports app powered by Cloudflare Workers, D1, and Pages",
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/server.js",
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "db:init": "wrangler d1 execute sports-db --file=schema.sql",
